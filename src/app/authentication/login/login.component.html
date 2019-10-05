@@ -1,0 +1,54 @@
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body highlight">
+          <h5 class="card-title text-center">Sign In</h5>
+          <form [formGroup]="loginForm" class="form-signin" (ngSubmit)="login()">
+            <div class="form-label-group">
+              <label for="inputEmail">Email address</label>
+              <input type="email" formControlName="email" id="inputEmail" class="form-control"
+                placeholder="Email address" required autofocus>
+              <div class="invalid-feedback">
+                Enter Valid email
+              </div>
+            </div>
+
+            <div class="form-label-group">
+              <label for="inputPassword">Password</label>
+              <input type="password" formControlName="password" id="inputPassword" class="form-control"
+                placeholder="Password" required>
+              <div class="invalid-feedback">
+                Enter Password
+              </div>
+            </div>
+
+
+            <div class="row">
+
+              <div class="col-md-7">
+                <div class="custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Remember password</label>
+                </div>
+              </div>
+
+              <div class="col-md-5 pull-right">
+
+                <a href="#" class=" float-right">Forgot Password </a>
+              </div>
+
+
+              <div class="col-md-6">
+                <input type="submit" value="Login" class="btn btn-primary login_btn" [disabled]="loginForm.invalid">
+              </div>
+
+              <div class="col-md-6 pull-right">
+                <input type="button" value="Singup" class="btn float-right login_btn">
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

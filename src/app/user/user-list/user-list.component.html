@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1>Users</h1>
+  </div>
+  <div class="col-md-6">
+    <span class="pull-right"
+      ><button
+        type="button"
+        class="btn btn-outline-primary float-right"
+        [routerLink]="['/user/create']"
+      >
+        Create User
+      </button></span
+    >
+  </div>
+</div>
+
+<ng-container *ngIf="users">
+  <div class="row">
+    <div
+      *ngFor="let user of users.data"
+      class="card col-md-3 p-0"
+      style="margin: 5px"
+    >
+      <div class="d-flex ">
+        <div class="p-2">
+          <img [src]="user.avatar" alt="Avatar" class="user-profile" />
+        </div>
+
+        <div class="p-2">
+          <h6>{{ user.first_name }} {{ user.last_name }}</h6>
+          <p class="m-0 gray-label">Location</p>
+          <p class="m-0">Mobile: 8974561230</p>
+        </div>
+      </div>
+      <hr />
+      <div class="d-flex justify-content-center">
+        <a routerLink="/user/edit/{{ user.id }}">
+          <fa name="pencil-square-o"></fa>
+        </a>
+        <a routerLink="/user/detail/{{ user.id }}">
+          <fa name="id-card-o"></fa>
+        </a>
+        <a  (click)="openModal(template,user.id)" >
+          <fa name="trash"></fa>
+        </a>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Delete Alert</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Are you sure want to delete user?
+  </div>
+  <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">No</button>
+        <button type="button" class="btn btn-default" (click)="deleteUser();modalRef.hide()">Yes</button>
+      </div>
+</ng-template>
